@@ -1,0 +1,20 @@
+.review {
+  border: 1px solid black;
+  width: 30em;
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.5em;
+}
+
+.review h3 {
+  font-size: 1.2em;
+  margin: 0;
+  text-transform: capitalize;
+  margin-bottom: 0.5em;
+}
+
+.review div {
+  text-align: left;
+}
