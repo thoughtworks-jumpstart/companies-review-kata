@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { companies } from "../data/companiesData";
 import Review from "../components/Review";
 import "./CompanyDetails.css";
+import ReviewModal from "../components/ReviewModal";
 
-const CompanyDetails = ({ match, history }) => {
+const CompanyDetails = ({ match, history, isLogin, username }) => {
   const companyId = match.params.id;
   const [companyDetail, setCompanyDetail] = useState();
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const data = companies.find(company => company.id === companyId);
@@ -17,6 +19,14 @@ const CompanyDetails = ({ match, history }) => {
     }
   }, [history, companyId]);
 
+  const addReview = newReview => {
+    const reviews = [
+      ...companyDetail.reviews,
+      { username: username, ...newReview },
+    ];
+    setCompanyDetail({ ...companyDetail, reviews });
+  };
+
   return (
     <div>
       {companyDetail && (
@@ -27,13 +37,24 @@ const CompanyDetails = ({ match, history }) => {
           <b>number of employees: {companyDetail.numberOfEmployees}</b>
           <div>{companyDetail.description}</div>
 
+          {!!isLogin && (
+            <button onClick={() => setShowModal(true)}>Add Review</button>
+          )}
+
+          {!!showModal && (
+            <ReviewModal
+              closeModal={() => setShowModal(false)}
+              addReview={addReview}
+            />
+          )}
+
           <div className={"user-review"}>
             {companyDetail.reviews.map(userReview => {
-              const { id, userName, review, rating, title } = userReview;
+              const { id, username, review, rating, title } = userReview;
               return (
                 <Review
                   key={id}
-                  userName={userName}
+                  username={username}
                   rating={rating}
                   title={title}
                   review={review}

@@ -24,7 +24,7 @@ const MAX_RATING = 5;
 const createFeedback = user => ({
   id: random.uuid(),
   userId: user.id,
-  userName: `${user.firstName} ${user.lastName}`,
+  username: `${user.firstName} ${user.lastName}`,
   rating: Math.floor(Math.random() * (MAX_RATING + 1)),
   title: lorem.words(2),
   review: lorem.paragraph(),

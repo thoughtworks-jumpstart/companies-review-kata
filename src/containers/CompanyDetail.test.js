@@ -15,7 +15,7 @@ jest.mock("../data/companiesData", () => {
           {
             id: "236b938a-6372-438b-a47f-c72363b766ef",
             userId: "98d065e6-2ef8-4ac8-8e3a-2bb329e812f0",
-            userName: "Justice Tromp",
+            username: "Justice Tromp",
             rating: 4,
             title: "magnam dolorem",
             review:
@@ -24,7 +24,7 @@ jest.mock("../data/companiesData", () => {
           {
             id: "4331d197-08a1-493d-b830-b03fee9ed566",
             userId: "1e4c18bd-219b-4a5f-a200-c2cac014d7e7",
-            userName: "Layla McLaughlin",
+            username: "Layla McLaughlin",
             rating: 3,
             title: "corrupti nemo",
             review:
@@ -33,7 +33,7 @@ jest.mock("../data/companiesData", () => {
           {
             id: "221dc997-5377-4a2d-b9a2-d7ea95314eeb",
             userId: "cb59f916-72f0-4a58-867e-59e1432de728",
-            userName: "Reginald Wisozk",
+            username: "Reginald Wisozk",
             rating: 1,
             title: "corporis qui",
             review:
@@ -52,7 +52,7 @@ jest.mock("../data/companiesData", () => {
           {
             id: "965ef3f4-aaf0-4189-a468-761bbc99a4ed",
             userId: "cb59f916-72f0-4a58-867e-59e1432de728",
-            userName: "Reginald Wisozk",
+            username: "Reginald Wisozk",
             rating: 1,
             title: "voluptate blanditiis",
             review:
@@ -61,7 +61,7 @@ jest.mock("../data/companiesData", () => {
           {
             id: "e77cd435-e399-4863-a2f6-38a80e204729",
             userId: "98d065e6-2ef8-4ac8-8e3a-2bb329e812f0",
-            userName: "Justice Tromp",
+            username: "Justice Tromp",
             rating: 0,
             title: "amet quod",
             review:
