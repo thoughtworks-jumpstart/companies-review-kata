@@ -2,8 +2,9 @@ import React from "react";
 import { render } from "@testing-library/react";
 import App from "./App";
 
-test("renders learn react link", () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText("Articles");
-  expect(linkElement).toBeInTheDocument();
+describe("App", () => {
+  it("should render the article page", () => {
+    const { getByTestId } = render(<App />);
+    expect(getByTestId("companies")).toBeInTheDocument();
+  });
 });
