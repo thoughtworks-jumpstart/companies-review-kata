@@ -9,23 +9,21 @@ const Login = ({ setIsLogin, setUserName, history }) => {
   };
 
   return (
-    <div>
+    <div data-testid="login">
       <div>
-        <div>
-          <label>Login</label>
-          <input
-            type="text"
-            value={name}
-            onChange={event => setName(event.target.value)}
-          />
-        </div>
-
-        <div>
-          <label>Password</label>
-          <input type="password" />
-        </div>
-        <button onClick={login}>Login</button>
+        <label>Login</label>
+        <input
+          type="text"
+          value={name}
+          onChange={event => setName(event.target.value)}
+        />
       </div>
+
+      <div>
+        <label>Password</label>
+        <input type="password" />
+      </div>
+      <button onClick={login}>Login</button>
     </div>
   );
 };
