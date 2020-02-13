@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const Login = ({ setIsLogin, setUserName, history }) => {
   const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
   const login = () => {
     setIsLogin(true);
     setUserName(name);
@@ -13,6 +14,7 @@ const Login = ({ setIsLogin, setUserName, history }) => {
       <div>
         <label>Login</label>
         <input
+          aria-label="login"
           type="text"
           value={name}
           onChange={event => setName(event.target.value)}
@@ -21,9 +23,16 @@ const Login = ({ setIsLogin, setUserName, history }) => {
 
       <div>
         <label>Password</label>
-        <input type="password" />
+        <input
+          aria-label="password"
+          type="password"
+          value={password}
+          onChange={event => setPassword(event.target.value)}
+        />
       </div>
-      <button onClick={login}>Login</button>
+      <button data-testid="login-button" onClick={login}>
+        Login button
+      </button>
     </div>
   );
 };

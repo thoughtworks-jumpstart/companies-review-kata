@@ -22,13 +22,17 @@ const CompanyDetails = ({ match, history, isLogin, username }) => {
   const addReview = newReview => {
     const reviews = [
       ...companyDetail.reviews,
-      { username: username, ...newReview },
+      {
+        username: username,
+        ...newReview,
+        id: Math.floor(Math.random() * 100000),
+      },
     ];
     setCompanyDetail({ ...companyDetail, reviews });
   };
 
   return (
-    <div>
+    <div data-testid="company-detail">
       {companyDetail && (
         <div>
           <h1>

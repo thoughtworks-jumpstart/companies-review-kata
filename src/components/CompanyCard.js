@@ -6,9 +6,11 @@ const CompanyCard = ({ id, name, numberOfEmployees, description }) => {
   return (
     <div className="company-card" data-testid="company-card">
       <Link to={`/companies/${id}`}>
-        <h1>{name}</h1>
-        <p>number of employees: {numberOfEmployees}</p>
-        <p>{description}</p>
+        <div aria-label="link to company">
+          <h1>{name}</h1>
+          <p>number of employees: {numberOfEmployees}</p>
+          <p>{description}</p>
+        </div>
       </Link>
     </div>
   );

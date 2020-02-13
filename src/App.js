@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Companies from "./containers/Companies";
 import CompanyDetail from "./containers/CompanyDetail";
@@ -9,23 +9,6 @@ function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [username, setUsername] = useState();
 
-  const logoutRoutes = () => {
-    return (
-      <Fragment>
-        <Route
-          exact
-          path="/login"
-          render={routeProps => (
-            <Login
-              {...routeProps}
-              setIsLogin={setIsLogin}
-              setUserName={setUsername}
-            />
-          )}
-        />
-      </Fragment>
-    );
-  };
   return (
     <div className="App">
       <BrowserRouter>
@@ -47,7 +30,19 @@ function App() {
               />
             )}
           />
-          {!isLogin && logoutRoutes()}
+          {!isLogin && (
+            <Route
+              exact
+              path="/login"
+              render={({ history }) => (
+                <Login
+                  history={history}
+                  setIsLogin={setIsLogin}
+                  setUserName={setUsername}
+                />
+              )}
+            />
+          )}
 
           <Redirect to="/" />
         </Switch>

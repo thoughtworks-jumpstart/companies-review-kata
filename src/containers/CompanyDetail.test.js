@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import fixtures from "../data/companiesWithReviewFixture";
 jest.mock("../data/companiesData", () => {
   return {
@@ -74,7 +74,7 @@ jest.mock("../data/companiesData", () => {
 });
 import CompanyDetail from "./CompanyDetail";
 
-describe.only("CompanyDetail", () => {
+describe("CompanyDetail", () => {
   let data, match, defaultProps;
 
   const history = {
@@ -92,6 +92,8 @@ describe.only("CompanyDetail", () => {
     defaultProps = {
       match,
       history,
+      isLogin: true,
+      username: "john smith",
     };
   });
 
@@ -121,5 +123,53 @@ describe.only("CompanyDetail", () => {
     const { getAllByTestId } = render(<CompanyDetail {...defaultProps} />);
 
     expect(getAllByTestId("user-review")).toHaveLength(data.reviews.length);
+  });
+
+  describe("add review", () => {
+    it("should open review", () => {
+      const { getByText, getByTestId } = render(
+        <CompanyDetail {...defaultProps} />,
+      );
+
+      fireEvent.click(getByText("Add Review"));
+
+      expect(getByTestId("review-modal")).toBeInTheDocument();
+    });
+
+    it.each([
+      [-1, "0/5"],
+      [5, "5/5"],
+      [6, "5/5"],
+    ])("should add review", (ratings, ratingsText) => {
+      const { getByText, getByLabelText } = render(
+        <CompanyDetail {...defaultProps} />,
+      );
+
+      fireEvent.click(getByText("Add Review"));
+      fireEvent.change(getByLabelText("feedback title"), {
+        target: {
+          value: "some title",
+        },
+      });
+
+      fireEvent.change(getByLabelText("feedback ratings"), {
+        target: {
+          value: ratings,
+        },
+      });
+
+      fireEvent.change(getByLabelText("feedback review"), {
+        target: {
+          value: "some review",
+        },
+      });
+
+      fireEvent.click(getByText("Okay"));
+
+      expect(getByText(/some title/)).toBeInTheDocument();
+      const expectedRatingsText = new RegExp(ratingsText, "g");
+      expect(getByText(expectedRatingsText)).toBeInTheDocument();
+      expect(getByText("some review")).toBeInTheDocument();
+    });
   });
 });

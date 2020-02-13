@@ -18,11 +18,12 @@ const ReviewModal = ({ closeModal, addReview }) => {
         closeModal();
       }}
     >
-      <div className="review-modal">
+      <div data-testid="review-modal" className="review-modal">
         <h3>Feedback Form</h3>
         <div>
           <label>Title</label>
           <input
+            aria-label="feedback title"
             type="text"
             value={title}
             onChange={event => setTitle(event.target.value)}
@@ -32,6 +33,7 @@ const ReviewModal = ({ closeModal, addReview }) => {
         <div>
           <label>Ratings</label>
           <input
+            aria-label="feedback ratings"
             type="number"
             value={rating}
             min={MIN_RATING}
@@ -52,6 +54,7 @@ const ReviewModal = ({ closeModal, addReview }) => {
         <div>
           <label>Review</label>
           <textarea
+            aria-label="feedback review"
             value={review}
             onChange={event => setReview(event.target.value)}
             rows="5"
