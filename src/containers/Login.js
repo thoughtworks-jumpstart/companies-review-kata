@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Login.css";
 
 const Login = ({ setIsLogin, setUserName, history }) => {
   const [name, setName] = useState("");
@@ -10,7 +11,7 @@ const Login = ({ setIsLogin, setUserName, history }) => {
   };
 
   return (
-    <div data-testid="login">
+    <div data-testid="login" className="login-page">
       <div>
         <label>Login</label>
         <input

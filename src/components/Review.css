@@ -1,5 +1,7 @@
 .review {
   border: 1px solid black;
+  background-color: azure;
+  border-radius: 0.4em;
   width: 30em;
   margin: 1em;
   display: flex;

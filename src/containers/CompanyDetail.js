@@ -34,7 +34,7 @@ const CompanyDetails = ({ match, history, isLogin, username }) => {
   return (
     <div data-testid="company-detail">
       {companyDetail && (
-        <div>
+        <div className="details-content">
           <h1>
             {companyDetail.companyName}, {companyDetail.companySuffix}
           </h1>
@@ -42,7 +42,9 @@ const CompanyDetails = ({ match, history, isLogin, username }) => {
           <div>{companyDetail.description}</div>
 
           {!!isLogin && (
-            <button onClick={() => setShowModal(true)}>Add Review</button>
+            <button className="add-review" onClick={() => setShowModal(true)}>
+              Add Review
+            </button>
           )}
 
           {!!showModal && (

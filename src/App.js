@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import "./App.css";
 import Companies from "./containers/Companies";
 import CompanyDetail from "./containers/CompanyDetail";
@@ -15,6 +15,10 @@ function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [username, setUsername] = useState();
 
+  const getUserInitial = () => {
+    return username ? username.slice(0, 2).trim() : "";
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -23,15 +27,20 @@ function App() {
             <NavLink exact to="/">
               CompanyReviews
             </NavLink>
-            {!isLogin && (
+          </div>
+          <div>
+            {!isLogin ? (
               <NavLink exact to="/login">
                 Login
               </NavLink>
-            )}
-          </div>
-          <div>
-            {isLogin && (
-              <button onClick={() => setIsLogin(false)}>Logout</button>
+            ) : (
+              <Fragment>
+                <div className="initals">
+                  <span>{getUserInitial()}</span>
+                </div>
+
+                <button onClick={() => setIsLogin(false)}>Logout</button>
+              </Fragment>
             )}
           </div>
         </header>
