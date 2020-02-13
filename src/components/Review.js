@@ -8,7 +8,7 @@ const Review = ({ username, rating, title, review }) => {
         {title} {rating}/5
       </h3>
       <div>{review}</div>
-      <div>Username: {username}</div>
+      <div className="user">By: {username}</div>
     </div>
   );
 };

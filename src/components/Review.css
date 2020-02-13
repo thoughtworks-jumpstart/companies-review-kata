@@ -18,3 +18,8 @@
 .review div {
   text-align: left;
 }
+
+.user {
+  font-weight: 600;
+  align-self: flex-end;
+}

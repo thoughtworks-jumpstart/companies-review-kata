@@ -31,7 +31,7 @@ const createFeedback = user => ({
 });
 
 export const companies = [];
-for (let i = 0; i < 2; i++) {
+for (let i = 0; i < 10; i++) {
   companies.push(createCompanyReview());
 }
 
@@ -40,7 +40,7 @@ for (let i = 0; i < 5; i++) {
   users.push(createUser());
 }
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 20; i++) {
   const feedback = createFeedback(getRandom(users));
   const randomCompany = getRandom(companies);
   randomCompany.reviews.push(feedback);
